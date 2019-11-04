@@ -2,15 +2,27 @@
 public abstract class Money 
 {
 	protected int amount;
+    protected String currency;
 
-  	static Dollar dollar(int amount)  
+  	Money(int amount, String currency)
     {
-		return new Dollar(amount);
-    }
+		this.amount = amount;
+		this.currency = currency;
+	}
+
+  	static Money dollar(int amount) 
+    {
+		return new Dollar(amount, "USD");
+	}
 
   	static Money franc(int amount) 
     {
-		return new Franc(amount);
+ 		return new Franc(amount, "CHF");
+	}
+
+    String currency() 
+    {
+		return currency;
 	}
 
   	abstract Money times(int multiplier); 
