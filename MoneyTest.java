@@ -3,23 +3,18 @@ import org.junit.runner.JUnitCore;
 
 public class MoneyTest extends TestCase 
 {
-    public void testEquality() 
+    @Test
+  	public void testCurrency() 
     {
-       	assertTrue(Money.dollar(5).equals(Money.dollar(5)));
-		assertFalse(Money.dollar(5).equals(Money.dollar(6)));
-		assertTrue(Money.franc(5).equals(Money.franc(5)));
-		assertFalse(Money.franc(5).equals(Money.franc(6)));
-		assertFalse(Money.franc(5).equals(Money.dollar(5)));
+		assertEquals("USD", Money.dollar(1).currency());
+		assertEquals("CHF", Money.franc(1).currency());
 	}
 
-    public static void main(String[] args) throws Exception  
+    @Test
+    public void testEquality() 
     {
-		JUnitCore.main("MoneyTest");
-    }
-
-    public void testCurrency() 
-    {
-       assertEquals("USD", Money.dollar(1).currency());
-       assertEquals("CHF", Money.franc(1).currency());
-    }
-} 
+		assertTrue(Money.dollar(5).equals(Money.dollar(5)));
+		assertFalse(Money.dollar(5).equals(Money.dollar(6)));
+		assertFalse(Money.franc(5).equals(Money.dollar(5)));
+	}
+}
